@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+	<title>Project 1 - sample code 2</title>
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+	<style>
+	
+	<body>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #40b0a6;
+  color: white;
+}
+
+.citations {
+  padding: 50px;
+  text-align: Left;
+  <!-- background-color: #40b0a6; -->
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+
+.methodology {
+  padding: 50px;
+  text-align: Left;
+  <!-- background-color: #40b0a6; -->
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+ .unclear{
+  background: #ffd0c4; 
+  padding: 5px;
+}
+	
+ .clear{
+  background: #c4ffee; 
+  padding: 5px;
+}
+
+	</style>
+</head>
+
+
+
+
+<div class="about-section">
+  <h1>Project Overview</h1>
+  <p> Video game is an electronic game that can be played on a computing device, such as a personal computer,
+  gaming console or mobile phone. Video games have come a long way since the first games emerged in the 1970s. Today’s video games offer photorealistic graphics and simulate reality
+  to a degree which is astonishing in many cases such as <a href = https://www.youtube.com/watch?v=iqysmS4lxwQ&ab_channel=IGN >Ghost of Tsushima</a>, <a href = https://www.youtube.com/watch?v=TYqJALPVn0Y&ab_channel=Xbox >Flight Simulator</a>. 
+  Data from 2021 shows that the number of gamers around the globe are estimated to be around 3 Billion including computer games,
+  mobile games and console games. 
+  </p>
+  
+  <p>Given the huge market size it is interesting to try to understand how the video game industry has evolved and what insights we can extract from studying video game data. The project is done by Alankrit Gupta and focuses mainly on Steam PC games <a href =https://store.steampowered.com/ > Steam</a>. It uses data hosted on  
+  <a href =https://data.mendeley.com/datasets/ycy3sy3vj2/1 > mendeley</a> and <a href =https://data.world/craigkelly/steam-game-data > data.world</a>. The aim for the project is exploratory and will focus on insight generation while testing out capabilities of python library
+  <a href =https://altair-viz.github.io/# > Altair</a>.
+  
+
+  </p>
+</div>
+
+<div class="methodology">
+
+
+<h1 style="text-align:center">Design Methodology</h1>
+
+<h2 style="text-align:left">Initial Assessment </h2>
+   <p> Being a video game enthusiast I was very comfortable with the data domain and had a solid understanding fo what sort of trends I should be expecting. The game details dataset was
+   pretty standard with almost all the information one wold expect from sales and description data. I had an exhaustive list of questions mostly pertaining to active player count, what kind
+   of games get rated highly, video game description analyis and finally how gaming has become more demanding over the years. The part that was the most exciting was going to be how can I make 
+   simple charts I had in mind interactive and get them to talk to each other. 
+   
+   
+   As part of requirement gathering I identified the main topics and the deep dive questions related to each topic as under:
+   
+   <p><span class="clear">The main topics that were to be explored:</span>
+
+   <ol class="l1">
+   <li>Player Retention</li>
+   <li>Video Game Scores</li>
+   <li>Video Game Description</li>
+   <li>Video Game Requirements</li>
+  
+
+   </ol>
+   
+   <p><span class="clear">The deepdive questions associated with the topics:</span>
+	<ol class="l2">
+   <li>How are player counts growing/declining over years ?</li>
+   <li>How do single player games compete against multiplayer games ?</li>
+   <li>Do we see any particular outliers in active player counts ?</li>
+   <li>What genre of games are highly rated ?</li>
+   <li>What genre of games are released the most ?</li>
+   <li>What genre of games are rated the highest?</li>
+   <li>How does certain scoring on games vary across different genres ?</li>
+   <li>What keywords are usually associated with video games ?</li>
+   <li>How do these keywords differ by genre ?</li>
+   <li>Are PC game requirements more demanding now than before? </li>
+</ol>
+
+As this project was an exercise to explore python and its visualization capabilities, there were a few additional goals for the project:   
+
+<ul>
+	<li>The graphs would be made entirely using python libraries but pushing beyond plotly and matplotlib</li>
+	<li>Aesthetically pleasing through color scheme that is both functional and accessible to broader audience</li>
+    <li>The graphs should be highly interactive and dynamic</li>
+	</ul>	
+
+
+
+<h2 style="text-align:left"> Approach </h2>
+
+<p>
+
+The very first hurdle in building this project was the data. Since the input data came from two different sources, a lot of data processing went behind the scenes to combine information
+from both the sources and making sure there are no missing values in the correct columns. Since the project was built in python after the intial data compilation into a single file 
+the rest of the process was fast and scalable. The interesting aspect of the project was that all 4 topics being studied had the same source but had completely different levels of data
+being displayed via graphs.
+
+The first task was to combine player count csv files into one single file. This was a huge endeavor given the large amount of files for each video game. In order to keep data at a manageable level 
+only the player counts at start of each month were retained. The graph was always going to be time series graph but as there were over 12k games it would become extremely cluttered if all games were 
+displayed. Therefore a list of 20 popular games
+were selected in the year 2017 along with the functionality to select and study each game individually. 
+The list conatined a wide varity of singleplayer and multiplayer games as we wanted to compare both kinds of games. The graph was given additional functionality
+to view just one, a few or all the games for comparison, a zoom feature as well as a reset feature to restore the graph to original form.
+
+</p>
+
+
+<p>
+Even for subsequent charts such as assigning a genre to each game required data transformations to assign each game with the most optimal genre. Similarily, for the game descriptions I had to process
+the associated text combined from all games and remove gibberish as well as english stop words. Once we removed all the common english words we could find words that are actually relevant and sometimes
+even unique to a particular genre of games. Once all intial datasets were finalized, I started designing the visuals keeping interactivity in mind and connecting information spread across multiple graphs.
+
+</p>
+
+<p>
+I tried to replicate the results using the color templates I had used in project 1 but unfortunately  since the number of data points and levels was too large it became a challenge to keep 
+track of each entity. In the end I went ahead with the predefined set of color combinations provided by Altair but made sure all colors blend well with the theme and background of the app while 
+still being distinct enough to differentiate categories from one other.
+
+</p>
+
+<p>
+
+As this project was mostly an exploratory exercise, the entire project was a lot of fun to test out in python. Exploring libraries was both challenging and fun but Altair proved to be an extremely 
+powerful tool into making interactive visualizations. The most amount of work went into experimenting with libraries and their capabilities and what sort of interactivity made the most sense.
+Despite the newer versions of libraries there was documentation available which was helpful. Overall I'm realy happy and proud of the kind of interactivity I was able to achive and how useful 
+the graphs are to deepdive into the data. I enjoyed using Altair and would definetely recommend using it for data visualization. 
+</p>
+
+
+
+<h2 style="text-align:left">Observations</h2>
+
+
+
+<ol class="l1">
+   <li>Player Retention
+   
+   <ul>
+	<li>Using the timeline gragh, we can see that multiplayer games such as CS:GO and Dota 2 fetch a larger player base as compared to single player games such as Witcher 3.</li>
+	<li>Free to play games such as Path of exile and Warframe have fluctuating player base and hugely rely on seasonal content releases to bring players back to play the game</li>
+    <li>Multiplayer games that are built on hype can also loose a lot of player base if the games do not deliver on new content such as: Player Unknown Battlegrounds</li>
+	<li>Game decisions such as going from a paid version to "free to play" or having a tie-up with a Netflix TV series "The Witcher" can boost player base significantly as observed in Rocket League and The Witcher 3</li>
+	</ul>
+   
+   </li>
+   <li>Video Game Scores
+   <ul>
+   <li>Given the massive size of the industry that is continously growing there are more video games being released in recent years as compared to older times</li>
+   <li>Multiplayer games are often rated lower as it is trickier to find a balance between tweaking the power of the video game elements</li>
+   <li>Action games and Strategy games are the most common Genre of game being released </li>
+   <li>RPG and strategy games are often rated highter than other games not by a huge margin.</li>
+	</ul>  
+  </li>
+  
+  
+   <li>Video Game Description
+   
+   <ul>
+	<li>Certain keywords are common across all genre of games and are used very frequently such as "New","Game","World","Players","Experience"</li>
+	<li>Some genres of games can have their own set of unique words which make the most sense for the kind of games being described such as:
+		<ul>
+		<li>Action : Weapons, Action</li>
+		<li>Adventure: Explore, World, Puzzles</li>
+		<li>Strategy: Simulation, Civilization, Map, Build</li>
+		<li>Multiplayer: Combat, squad, Online</li>
+		<li>RPG: Character, Experience, Fantasy, Explore, Skills</li>
+		<li>Sports: Driving, Realistic, Cars , Race</li>
+		</ul>
+   
+	</li>
+    
+	</ul>
+   
+   </li>
+   <li>Video Game Requirements
+   <ul>
+	<li>Although the sparsity of data in intial years, games released before 2010 512 MB of RAM memory was the most suggested PC specification </li>
+	<li>Post 2010 we see 4 GB being more recommended whereas 512 MB is one of the least recommneded specification</li>
+	</ul>
+   
+   </li>
+  
+
+   </ol>
+
+  </p>
+
+
+</div>
+
+<div class="citations">
+<h2 style="text-align:center">Citations for resources used</h2>
+<ul>
+  <li>Data Source 1: <a href = https://data.mendeley.com/datasets/ycy3sy3vj2/1 style="color: #2db3f1">Mendeley</a></li>
+  <li>Data Source 2: <a href =https://data.world/craigkelly/steam-game-data style="color: #2db3f1">Data.World</a></li>
+  <li>Number of Gamers: <a href = https://www.statista.com/statistics/293304/number-video-gamers/ style="color: #2db3f1">Gamer Count</a></li>
+  <li>Video Game: <a href =https://www.statista.com/topics/868/video-games/ style="color: #2db3f1">History of video games</a></li>
+  <li>Altair: <a href =https://altair-viz.github.io/gallery/index.html style="color: #2db3f1">Documentation Reference </a></li>
+  <li>Navigation and top bar code reference:  <a href =https://www.w3schools.com/css/css_navbar.asp style="color: #2db3f1">w3schools</a></li>
+  <li>Project 1 resource reference:  <a href = https://codestersupreme.github.io/ style="color: #2db3f1">Project 1</a></li>
+  <li>Photorealistic Games:  <a href = https://www.youtube.com/watch?v=iqysmS4lxwQ&ab_channel=IGN style="color: #2db3f1">Ghost of Tsushima</a></li>
+  <li>Photorealistic Games:  <a href = https://www.youtube.com/watch?v=TYqJALPVn0Y&ab_channel=Xbox style="color: #2db3f1">Microsoft Flight Simulator</a></li>
+
+</ul>
+
+</div>
+</div>
